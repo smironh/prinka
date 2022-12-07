@@ -83,7 +83,7 @@ async def next(c: types.CallbackQuery):
 @dp.message_handler(content_types=['text'])
 async def ref(msg: types.Message):
     if msg.text == '👷‍♂️Рефералы':
-        markup = keyboard.ref()
+        markup = await keyboard.ref()
 
         info = db.profile(msg)
 
