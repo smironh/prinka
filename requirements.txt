@@ -1,0 +1,5 @@
+aiogram
+glQiwiApi
+datetime
+requests
+apscheduler
