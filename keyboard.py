@@ -10,7 +10,8 @@ async def osnova():
 
 async def ref():
     btn1 = InlineKeyboardButton('Получить ссылку', callback_data='give')
+    btn2 = InlineKeyboardButton('Отмена', callback_data = 'stop')
 
-    keyboard = InlineKeyboardMarkup().add(btn1)
+    keyboard = InlineKeyboardMarkup().add(btn1, btn2)
 
     return keyboard
