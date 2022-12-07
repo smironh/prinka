@@ -4,7 +4,7 @@ async def osnova():
     btn1 = KeyboardButton('👷‍♂️Рефералы')
     btn2 = KeyboardButton('🔨Премиум доступ')
 
-    keyboard = ReplyKeyboardMarkup().add(btn1, btn2)
+    keyboard = ReplyKeyboardMarkup(resize_keyboard=True).add(btn1, btn2)
 
     return keyboard
 
