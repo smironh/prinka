@@ -60,7 +60,6 @@ async def scheduled(msg: types.Message):
             if c == 1:
                 break
         await bot.send_photo(-1001891127901, photo=url,  caption = '[🔞Самые сочные фулы🔞](https://t.me/benzporn_robot?start=channel)')
-        await bot.send_video(msg.chat.id, video = '')
         await msg.answer('Успешно!')
     else:
         pass
