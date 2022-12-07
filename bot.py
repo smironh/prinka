@@ -12,8 +12,9 @@ from glQiwiApi import QiwiWallet, QiwiWrapper
 
 from datetime import datetime, timedelta
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
 
-scheduler = AsyncIOScheduler()
+scheduler = BackgroundScheduler()
 
 admin = cfg.admin
 
@@ -78,7 +79,11 @@ async def next(c: types.CallbackQuery):
         link = await bot.create_chat_invite_link(chat_id, expire_date.timestamp, 1)
 
         await c.message.answer(link.invite_link)
-
+        
+@dp.callback_query_handler(lambda c: c.data = 'stop'):
+async def stop(c: types.CallbackQuery):
+    if ref(msg.text == '🔨Премиум доступ') == 'ok':
+        break
 @dp.message_handler(content_types=['text'])
 async def ref(msg: types.Message):
     if msg.text == '👷‍♂️Рефералы':
@@ -104,7 +109,6 @@ async def ref(msg: types.Message):
 
             await msg.answer(f'Выставлен счет, у вас есть 10 минут на его оплату!', reply_markup=markup)
             while True:
-
                 if check == "PAID":
                     chat_id = -1001506130892
                     expire_date = datetime.now() + timedelta(days=1)
@@ -117,7 +121,7 @@ async def ref(msg: types.Message):
                 if check == 'EXPIRED':
                     await msg.answer('Вы не успели(')
                     break
-
+                return 'ok'
 
 async def scheduled1():
     Factor = 1       # Сколько штук парсится за раз (За проходку более 100 вроде не парсит)
