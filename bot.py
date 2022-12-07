@@ -70,7 +70,7 @@ async def next(c: types.CallbackQuery):
     await bot.answer_callback_query(c.id)
 
     await c.message.delete()
-    if db.profile()[0] < 5:
+    if db.profile(msg)[0] < 5:
         await c.message.answer('У вас не достаточно рефералов!')
     else:
         await c.message.answer('Поздравляю, теперь у вас есть доступ!')
