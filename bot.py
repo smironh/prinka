@@ -70,12 +70,11 @@ async def back(c: types.CallbackQuery):
 async def buy(msg):
     async with QiwiWrapper(secret_p2p = qiwi) as w:
         bill = await w.create_p2p_bill(
-            amount = 99,
-            comment = f'Оплата доступа на сумму 99\nКод - {random.randint(100, 999)}',
+            amount = 49,
+            comment = f'Оплата доступа на сумму 49₽\nКод - {random.randint(100, 999)}',
             life_time = datetime.now() + timedelta(minutes = 10))
 
-        btn1 = InlineKeyboardButton('Оплатить 99Р', url = bill.pay_url)
-
+        btn1 = InlineKeyboardButton('Оплатить 49₽', url = bill.pay_url)
         markup = InlineKeyboardMarkup().add(btn1)
 
         await msg.answer(f'Выставлен счет, у вас есть 10 минут на его оплату!', reply_markup=markup)
