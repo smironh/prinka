@@ -92,7 +92,7 @@ async def buy(msg):
                 break
                             
             if check == 'EXPIRED':
-                await msg.edit_text('Вы не успели((')
+                await bot.edit_message_text(msg.chat.id, 'Вы не успели((')
                 break
             
             await asyncio.sleep(10)
