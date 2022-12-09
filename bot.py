@@ -132,7 +132,7 @@ async def scheduled1():
         if c == 1:
             break
     if Filter == 'hentai':
-        await bot.send_photo(-1001891127901, photo=url,  caption =f'[🔞Самые сочные фулы🔞](https://t.me/benzporn_robot?start=channel)\n\n[🐱‍👤only hent👀](https://t.me/benzhent)\n\n#{Filter}')
+        await bot.send_photo(-1001891127901, photo=url,  caption =f'[🔞Самые сочные фулы🔞](https://t.me/benzporn_robot?start=channel)\n\n[🐱‍👤only hent👀](https://t.me/+r33QfR9oIr1lZTk6)\n\n#{Filter}')
         await bot.send_photo(-1001892597111, photo=url)
         
     else:
