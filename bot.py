@@ -80,7 +80,7 @@ async def buy(msg):
         await msg.answer(f'Выставлен счет, у вас есть 10 минут на его оплату!', reply_markup=markup)
         seconds = 600
         repeats = [1 for i in range(0, seconds)]
-        for i in repeats:
+        for _ in iter(int, 1):
             check = await w.check_p2p_bill_status(bill_id = bill.id)
             if check == "PAID":
                 chat_id = -1001506130892
@@ -95,7 +95,6 @@ async def buy(msg):
                 await msg.answer('Вы не успели((')
                 break
             
-            await asyncio.sleep(10)
 
 
 
