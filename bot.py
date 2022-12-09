@@ -80,7 +80,7 @@ async def buy(msg):
         await msg.answer(f'Выставлен счет, у вас есть 10 минут на его оплату!', reply_markup=markup)
         seconds = 600
         repeats = [1 for i in range(0, seconds)]
-        for _ in iter(int, 1):
+        for i in repeats:
             check = await w.check_p2p_bill_status(bill_id = bill.id)
             if check == "PAID":
                 chat_id = -1001506130892
@@ -95,6 +95,7 @@ async def buy(msg):
                 await msg.answer('Вы не успели((')
                 break
             
+            await asyncio.sleep(10)
 
 
 
@@ -132,6 +133,8 @@ async def scheduled1():
             break
     if Filter == 'hentai':
         await bot.send_photo(-1001891127901, photo=url,  caption =f'[🔞Самые сочные фулы🔞](https://t.me/benzporn_robot?start=channel)\n\n[🐱‍👤only hent👀](https://t.me/benzhent)\n\n#{Filter}')
+        await bot.send_photo(-1001892597111, photo=url)
+        
     else:
         await bot.send_photo(-1001891127901, photo=url,  caption =f'[🔞Самые сочные фулы🔞](https://t.me/benzporn_robot?start=channel)\n\n#{Filter}')
 
