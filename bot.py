@@ -116,32 +116,5 @@ async def ref(msg: types.Message):
         await buy(msg)
 
 
-async def scheduled1():
-    rand = ['hentai', 'oral', 'anal', 'nsfw']
-    Factor = 1       # Сколько штук парсится за раз (За проходку более 100 вроде не парсит)
-    Filter = random.choice(rand)
-    c = 0
-
-    data = '{"query":" query SubredditQuery( $url: String! $filter: SubredditPostFilter $iterator: String ) { getSubreddit(url: $url) { children( limit: 999999 iterator: $iterator filter: $filter disabledHosts: null ) { iterator items { __typename url title subredditTitle subredditUrl redditPath isNsfw albumUrl isFavorite mediaSources { url width height isOptimized } } } } } ","variables":{"url":"/r/'+str(Filter)+'","limit": '+str(Factor)+',"filter":"PICTURE","hostsDown":null},"authorization":null}'
-    resp = r.post('https://api.scrolller.com/api/v2/graphql', data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
-    data_images = json.loads(resp.text)
-    for item in data_images['data']['getSubreddit']['children']['items']:
-        url = item['mediaSources'][len(item['mediaSources'])-1]['url']
-        print(url)
-        c += 1
-        if c == 1:
-            break
-    if Filter == 'hentai':
-        await bot.send_photo(-1001891127901, photo=url,  caption =f'[🔞Самые сочные фулы🔞](https://t.me/benzporn_robot?start=channel)\n\n[🐱‍👤only hent👀](https://t.me/+r33QfR9oIr1lZTk6)\n\n#{Filter}')
-        await bot.send_photo(-1001892597111, photo=url)
-        
-    else:
-        await bot.send_photo(-1001891127901, photo=url,  caption =f'[🔞Самые сочные фулы🔞](https://t.me/benzporn_robot?start=channel)\n\n#{Filter}')
-
-
-scheduler.add_job(scheduled1, "interval", seconds=1800)
-scheduler.start()
-
-
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
